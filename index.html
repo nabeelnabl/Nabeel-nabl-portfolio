@@ -1774,6 +1774,22 @@
             const y = window.scrollY, t = document.querySelector('.h-title');
             if (t && y < window.innerHeight) t.style.transform = `translateY(${y * .11}px)`;
         }, { passive: true });
+
+        /* Mobile Banner Parallax */
+        const mPar = document.querySelector('.par');
+        window.addEventListener('scroll', () => {
+            if (mPar && window.innerWidth <= 960) {
+                const rect = mPar.getBoundingClientRect();
+                if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                    const totalTravel = window.innerHeight + rect.height;
+                    const scrolled = window.innerHeight - rect.top;
+                    const percentage = (scrolled / totalTravel) * 100;
+                    mPar.style.backgroundPosition = `center ${percentage}%`;
+                }
+            } else if (mPar) {
+                mPar.style.backgroundPosition = '';
+            }
+        }, { passive: true });
     </script>
 </body>
 
