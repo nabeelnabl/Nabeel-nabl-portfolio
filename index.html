@@ -120,6 +120,13 @@
             border-color: var(--red)
         }
 
+        /* Disable custom cursor on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            #cur, #cur-r { display: none !important; }
+            body { cursor: auto !important; }
+            a, button { cursor: pointer !important; }
+        }
+
         /* NAV */
         #nav {
             position: fixed;
@@ -1351,87 +1358,53 @@
         }
 
         /* RESPONSIVE */
+        @media(max-width:1024px) {
+            .p-img { height: auto; aspect-ratio: 16/10; } /* Make images proportional */
+        }
+
         @media(max-width:960px) {
-
-            .section,
-            .divider,
-            footer {
-                padding-left: 28px;
-                padding-right: 28px
-            }
-
-            #hero {
-                padding: 0 28px 56px
-            }
-
-            .h-brand {
-                left: 28px
-            }
-
-            .par {
-                padding: 100px 28px
-            }
-
-            .about-g,
-            .ct-wrap {
-                grid-template-columns: 1fr;
-                gap: 44px
-            }
-
-            .p-grid,
-            .svc-g {
-                grid-template-columns: 1fr
-            }
-
-            .p-card.wide {
-                grid-column: span 1
-            }
-
-            .ft {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px
-            }
-
-            .a-stats {
-                grid-template-columns: repeat(2, 1fr)
-            }
-
-            .st:nth-child(2) {
-                border-right: none
-            }
-
-            .nav-links {
-                display: none
-            }
-
-            .hamburger {
-                display: flex
-            }
-
-            .h-foot {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 24px
-            }
+            .section { padding: 72px 28px; }
+            .divider { margin: 0 28px; }
+            footer { padding: 64px 28px 28px 28px; }
+            
+            #hero { padding: 120px 28px 56px; justify-content: center; }
+            .h-brand { left: 28px; top: 28px; }
+            
+            /* Fix Parallax Desktop Zoom Glitch */
+            .par { padding: 72px 28px; background-attachment: scroll !important; }
+            
+            .about-g, .ct-wrap { grid-template-columns: 1fr; gap: 56px; }
+            .a-img-wrap { margin: 0 auto !important; width: 100%; max-width: 380px; }
+            .p-grid, .svc-g { grid-template-columns: 1fr; }
+            .p-card.wide { grid-column: span 1; }
+            .ft { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .a-stats { grid-template-columns: repeat(2, 1fr); }
+            .st:nth-child(2) { border-right: none; }
+            
+            .nav-links { display: none; }
+            #nav { left: auto; right: 28px; top: 24px; transform: none; width: 54px; height: 54px; padding: 0; justify-content: center; border-radius: 50%; }
+            .hamburger { display: flex; margin: 0 auto; }
+            .h-foot { flex-direction: column; align-items: flex-start; gap: 24px; }
         }
 
         @media(max-width:600px) {
-            .ft {
-                grid-template-columns: 1fr
-            }
-
-            .fb {
-                flex-direction: column;
-                text-align: center
-            }
-
-            .a-stats {
-                grid-template-columns: 1fr 1fr
-            }
-
-            footer {
-                padding: 44px 28px
-            }
+            /* Reduce Typography Ceilings */
+            .s-h { font-size: 32px; }
+            .a-text h3 { font-size: 28px; margin-bottom: 16px; }
+            .ct-left h2 { font-size: 32px; }
+            .p-title { font-size: 22px; }
+            .svc h3 { font-size: 20px; }
+            .st-n { font-size: 34px; }
+            
+            /* Squeeze internal paddings */
+            .svc { padding: 32px 28px; }
+            .p-body { padding: 24px 24px 28px; }
+            .pop-box { padding: 36px 24px; }
+            
+            /* Core Structural Folds */
+            .ft { grid-template-columns: 1fr; }
+            .fb { flex-direction: column; text-align: center; }
+            .a-stats { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
